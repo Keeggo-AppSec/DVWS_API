@@ -55,6 +55,7 @@ jobs:
       - uses: neerajsu/dependency-track-gh-action@v1.0.4
         with:
           serverHostBaseUrl: 'https://fortify-demo-lab-utils.keeggo.com/'
+          NODE_EXTRA_CA_CERTS: ${{ secrets.SONAR_ROOT_CERT }}
           apikey: ${{ secrets.DEPENDENCYTRACK_APIKEY }}
           projectname: 'DVWS_API'
           projectversion: 'Sample'
