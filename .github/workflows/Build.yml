@@ -11,7 +11,7 @@
 # assistance with configuration, feel free to create a help ticket in the Fortify on Demand portal.                                            #
 ################################################################################################################################################
 
-name: Fortify AST Scan + SonarQube
+name: SonarQube + Dependency Track + Fortify AST Scan
 
 on:
   workflow_dispatch:
