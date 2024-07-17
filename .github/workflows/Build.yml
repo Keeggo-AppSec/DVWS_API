@@ -56,7 +56,7 @@ jobs:
         with:
           serverHostBaseUrl: 'http://fortify-demo-lab-utils.keeggo.com/'
           apikey: ${{ secrets.DEPENDENCYTRACK_APIKEY }}
-          projectname: 'DVWS_API'
+          projectname: 'DVWS-API'
           projectversion: 'Sample'
           bomFilePath: 'target/bom.xml'
           timeoutInSecs: '10'
