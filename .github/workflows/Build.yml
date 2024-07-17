@@ -52,14 +52,17 @@ jobs:
       #   env:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       # Dependency Track
-      - uses: DependencyTrack/gh-upload-sbom@v3.0.0
+      - name: Generates BoM and upload to OWASP DTrack
+        id: riskscoreFromDT
+        uses:  Quobis/action-owasp-dependecy-track-check@main
         with:
-          serverHostname: 'http://fortify-demo-lab-utils.keeggo.com'
-          apiKey: ${{ secrets.DEPENDENCYTRACK_APIKEY }}
-          projectName: 'DVWS-API'
-          projectVersion: 'Sample'
-          bomFilename: "target/bom.xml"
-          autoCreate: true
+          url: 'http://fortify-demo-lab-utils.keeggo.com'
+          key: '${{ secrets.DEPENDENCYTRACK_APIKEY }}'
+          language: 'php'
+      
+      # Show the risk score output 
+      - name: Get the output time
+        run: echo "The risk score of the project is ${{ steps.riskscoreFromDT.outputs.riskscore }}"
         
       # Perform Fortify on Demand SAST + SCA scan and import SAST results into GitHub code scanning alerts
       - name: Run ScanCentral SAST Scan
