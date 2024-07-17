@@ -19,6 +19,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2 
+      - run: npm install
       # Generate SBOM      
       - name: Create SBOM with CycloneDX
         uses: CycloneDX/gh-node-module-generatebom@v1
